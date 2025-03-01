@@ -32,8 +32,8 @@ To describe the collective states of the fish shoals, we utilize the polarizatio
 
 There are several important works which support this project:
 
-- [mobbing flocks](http://www.nature.com/articles/s41467-019-13281-4) 
-- [circling flocks](https://royalsocietypublishing.org/doi/10.1098/rspb.2016.2602) 
+- [mobbing dataset](http://www.nature.com/articles/s41467-019-13281-4) 
+- [circling dataset](https://royalsocietypublishing.org/doi/10.1098/rspb.2016.2602) 
 - [transit dataset](http://www.nature.com/articles/s41467-019-13281-4) 
 - [schooling fish dataset](https://royalsocietypublishing.org/doi/10.1098/rsif.2021.0142) 
 
