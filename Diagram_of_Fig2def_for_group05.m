@@ -1,6 +1,6 @@
 function Diagram_of_Fig2def_for_group05
 
-%% 取数据
+%% 
 load group_05.mat
 % tracks = one_tracks_filt;
 BirdIDs=unique(tracks(:,1));
@@ -32,7 +32,7 @@ for i = 1 : size(Frame_matrix,2)-1
     end
 end
 
-%% 计算ICN及其他指标
+%% 
 threshold_ICNcorr = -0.6;
 LF_correlation_threshold = 0.8;
 anis_factor = 0;
