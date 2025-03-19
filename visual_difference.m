@@ -1,8 +1,8 @@
 function vis_vec=visual_difference(visual_area,vis_t,vis_t_)
 % vis_t: pre
 % vis_t_: next
-% 1st is 俯仰角[-pi/2,pi/2]
-% 2rd is 偏航角[-pi,pi]
+% 1st is [-pi/2,pi/2]
+% 2rd is [-pi,pi]
 if vis_t(2)>=-visual_area/2 & vis_t(2)<=visual_area/2
     vis_vec=vis_t_-vis_t;
     if abs(vis_vec(2))>pi
