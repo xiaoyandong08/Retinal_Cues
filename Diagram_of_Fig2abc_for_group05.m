@@ -1,7 +1,7 @@
 function Diagram_of_Fig2abc_for_group05
 
 
-%% 取数据
+%%
 load group_05.mat
 % tracks = one_tracks_filt;
 BirdIDs=unique(tracks(:,1));
@@ -33,7 +33,7 @@ for i = 1 : size(Frame_matrix,2)-1
 end
 diff_r(:,end+1) = diff_r(:,end);
 
-%% 计算ICN及其他指标
+%% 
 threshold_ICNcorr = -0.6;
 anis_factor = 0;
 
@@ -148,7 +148,7 @@ for t=1:maxstep
     pixel_y(:,t) = cell2mat(y_index);
 
     
-    %%%%%%%%%% 生成Fig.2abc
+    %%%%%%%%%% Fig.2abc
     if is_generate_snapshot == 1    
         if t == maxstep
             figure;
@@ -156,8 +156,8 @@ for t=1:maxstep
             subplot('position',[0.02 0.37 0.6 0.6]);
             imagesc(cube_img_1center);
             axis equal
-            xticks = [0, size(cube_img_1center,2)]; % 定义刻度
-            yticks = [0, size(cube_img_1center,1)]; % 定义刻度
+            xticks = [0, size(cube_img_1center,2)]; 
+            yticks = [0, size(cube_img_1center,1)]; 
             xlim([0,size(cube_img_1center,2)]);
             ylim([0,size(cube_img_1center,1)]);
 
@@ -165,14 +165,14 @@ for t=1:maxstep
             x_index = cell2mat(x_index);
             [~,y_index] = arrayfun(@(x) min(abs(x-y_angle_range)),yticks_angle,'UniformOutput',false);
             y_index = cell2mat(y_index);
-            set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); % 设置刻度
-            %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); % 设置刻度标签
+            set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); 
+            %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); 
             x_labelArray = [xticklabels_angle;compose('%d',x_pixel_range(x_index));];
             y_labelArray = [yticklabels_angle;compose('%d',y_pixel_range(y_index));];
-            set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); % 设置刻度标签
+            set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); 
             set(gca,'FontSize',14)
             title(sprintf('focal=%d, step=%d, spatial=%.2f, corrThresh=%.2f',focal_idx,t,ind_ave_spatial_value(focal_idx),threshold_ICNcorr));
-            % 画ICN678的轨迹
+            % 
             hold on;
             retina_focal = squeeze(retina_dist_ij(:,focal_idx,:));
             [~,max_index] = max(nanmean(retina_focal,1));
