@@ -1,7 +1,7 @@
 function Diagram_of_Fig3abc_for_group05
 
 
-%% 取数据
+%%
 load group_05.mat
 % tracks = one_tracks_filt;
 BirdIDs=unique(tracks(:,1));
@@ -33,7 +33,7 @@ for i = 1 : size(Frame_matrix,2)-1
 end
 diff_r(:,end+1) = diff_r(:,end);
 
-%% 计算ICN及其他指标
+%%
 threshold_ICNcorr = -0.6;
 anis_factor = 0;
 
@@ -165,7 +165,7 @@ for t=1:maxstep
     [~,y_index] = arrayfun(@(x) min(abs(x-y_angle_range)),aa(:,2),'UniformOutput',false);
     pixel_y(:,t) = cell2mat(y_index);
 
-    %%%%%%%%%% 生成video
+    %%%%%%%%%% video
     if is_generate_video == 1
 
         subplot('position',[0.05 0.2 0.6 0.8]);
@@ -180,15 +180,15 @@ for t=1:maxstep
         x_index = cell2mat(x_index);
         [~,y_index] = arrayfun(@(x) min(abs(x-y_angle_range)),yticks_angle,'UniformOutput',false);
         y_index = cell2mat(y_index);
-        set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); % 设置刻度
-        %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); % 设置刻度标签
+        set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); 
+        %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); 
         x_labelArray = [xticklabels_angle;compose('%d',x_pixel_range(x_index));];
         y_labelArray = [yticklabels_angle;compose('%d',y_pixel_range(y_index));];
-        %set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); % 设置刻度标签
+        %set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); 
         set(gca, 'xticklabel', x_labelArray(1,:),'yticklabel', y_labelArray(1,:));
         set(gca,'FontSize',14)
         title(sprintf('Ego = %d, Frame = %d',focal_idx,t));
-        % 画ICN678的轨迹
+        % 
         hold on;
         if t<=trace_length
             scatter(pixel_x(ICN_index6,:),pixel_y(ICN_index6,:),40,'r.');
@@ -227,17 +227,17 @@ for t=1:maxstep
 
         im(t) = getframe(gcf);
     end
-    %%%%%%%%%% 生成Fig.3a
+    %%%%%%%%%% Fig.3a
     if is_generate_snapshot == 1
         if t == 50
-            % 画Neighbors, Projection on ego-15s Retina when t = 50, 鸟的投影图片
+             
             figure;
             set(gcf,'Position',[103 144 949 566])
             subplot('position',[0.02 0.37 0.6 0.6]);
             imagesc(cube_img_1center);
             axis equal
-            xticks = [0, size(cube_img_1center,2)]; % 定义刻度
-            yticks = [0, size(cube_img_1center,1)]; % 定义刻度
+            xticks = [0, size(cube_img_1center,2)]; 
+            yticks = [0, size(cube_img_1center,1)]; 
             xlim([0,size(cube_img_1center,2)]);
             ylim([0,size(cube_img_1center,1)]);
 
@@ -245,14 +245,14 @@ for t=1:maxstep
             x_index = cell2mat(x_index);
             [~,y_index] = arrayfun(@(x) min(abs(x-y_angle_range)),yticks_angle,'UniformOutput',false);
             y_index = cell2mat(y_index);
-            set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); % 设置刻度
-            %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); % 设置刻度标签
+            set(gca, 'XTick',x_pixel_range(x_index),'YTick',y_pixel_range(y_index)); 
+            %set(gca, 'xticklabel', xticklabels_angle,'yticklabel', yticklabels_angle,'TickLabelInterpreter','latex'); 
             x_labelArray = [xticklabels_angle;compose('%d',x_pixel_range(x_index));];
             y_labelArray = [yticklabels_angle;compose('%d',y_pixel_range(y_index));];
-            set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); % 设置刻度标签
+            set(gca, 'xticklabel', strtrim(sprintf('%s\\newline%s\n', x_labelArray{:})),'yticklabel', strtrim(sprintf('%s\\newline%s\n', y_labelArray{:}))); 
             set(gca,'FontSize',14)
             title(sprintf('Ego=%d, step=%d, spatial=%.2f, corrThresh=%.2f',focal_idx,t,ind_ave_spatial_value(focal_idx),threshold_ICNcorr));
-            % 画ICN678的轨迹
+            % 
             hold on;
             scatter(pixel_x(ICN_index6,:),pixel_y(ICN_index6,:),40,'r.');
             scatter(pixel_x(ICN_index7,:),pixel_y(ICN_index7,:),40,'g.');
@@ -261,9 +261,9 @@ for t=1:maxstep
             hold off
         end
 
-        %%%%%%%%%% 生成Fig.3bc
+        %%%%%%%%%% Fig.3bc
         if t == maxstep
-            %画3个变量的时序图
+            %
             figure;
             set(gcf,'Position',[911   375   306   426])
             subplot(3,1,1)
