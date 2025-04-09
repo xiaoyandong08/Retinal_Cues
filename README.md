@@ -14,7 +14,7 @@ To describe the collective states of the fish shoals, we utilize the polarizatio
 
 ## 3. Quantifying allocation of attention to retinal cues
 
-- We provided MATLAB codes to reproduce our main results in allocation of attention to retinal cues, including 
+- We provided MATLAB codes (run on MATLAB_R2023b in Mac OS 15.3.2) to reproduce our main results in allocation of attention to retinal cues, including 
   - Fig.2: `Diagram_of_Fig2abc_for_group05.m` and `Diagram_of_Fig2def_for_group05.m`; 
   - Fig.3: `Diagram_of_Fig3abc_for_group05.m`; 
   - Fig.4: `Diagram_of_Fig4abc_for_group05.m`;
